@@ -1,0 +1,8 @@
+Actual verification date: 2026-11-01
+Command: g++ -std=c++17 -Wall -Wextra -pedantic astar.cpp -o /tmp/astar-demo && /tmp/astar-demo
+
+*******
+.###..*
+...#..*
+......*
+Self-tests passed
