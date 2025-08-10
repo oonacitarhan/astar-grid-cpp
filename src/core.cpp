@@ -1,13 +1,6 @@
-#include <algorithm>
-#include <iostream>
-#include <queue>
-#include <stdexcept>
-#include <string>
-#include <tuple>
-#include <vector>
-using Grid=std::vector<std::string>;
-using Point=std::pair<int,int>;
-std::vector<Point> path(const Grid& grid,Point start,Point goal,bool heuristic=true) {
+#include "core.hpp"
+
+std::vector<Point> path(const Grid& grid,Point start,Point goal,bool heuristic) {
     if(grid.empty()||grid[0].empty()) throw std::invalid_argument("empty grid");
     int h=grid.size(),w=grid[0].size();
     for(auto& row:grid) if(int(row.size())!=w) throw std::invalid_argument("ragged grid");
@@ -38,18 +31,4 @@ std::vector<Point> path(const Grid& grid,Point start,Point goal,bool heuristic=t
         }
     }
     return {};
-}
-void require(bool condition){if(!condition)throw std::runtime_error("self-test failed");}
-int main(){
-    Grid grid={".......",".###...","...#...","......."};
-    auto result=path(grid,{0,0},{3,6});
-    require(result.size()==path(grid,{0,0},{3,6},false).size());
-    require(result.size()==10);
-    require(path({".#."},{0,0},{0,2}).empty());
-    require(path({"."},{0,0},{0,0}).size()==1);
-    for(std::size_t i=1;i<result.size();++i)
-        require(std::abs(result[i].first-result[i-1].first)+std::abs(result[i].second-result[i-1].second)==1);
-    for(auto [r,c]:result)grid[r][c]='*';
-    for(auto& row:grid)std::cout<<row<<'\n';
-    std::cout<<"Self-tests passed\n";
 }
