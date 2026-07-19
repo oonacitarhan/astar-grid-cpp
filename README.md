@@ -35,7 +35,7 @@ A priority queue stores estimated total cost and actual distance. Stale entries 
 sh scripts/check.sh
 ```
 
-Three CTest suites with multiple assertion C++ checks exercise reference cases, invalid inputs, and relevant invariants.
+Four CTest suites with multiple assertions exercise reference cases, invalid inputs, and relevant invariants.
 The complete local run is in [docs/verification.txt](docs/verification.txt).
 The [checks workflow](.github/workflows/check.yml) executes the same source checks.
 
